@@ -1,0 +1,317 @@
+import {
+  CorticosteroidAgent,
+  HyaluronanAgent,
+  SynovialFluidProfile,
+} from '../types/clinical';
+
+export const CORTICOSTEROID_AGENTS: CorticosteroidAgent[] = [
+  {
+    id: 'triamcinolone_hexacetonide',
+    genericName: 'Triamcinolone hexacetonide',
+    tradeName: 'Aristospan',
+    solubilityClass: 'Relatively Insoluble',
+    concentrationMgMl: '20 mg/mL',
+    relativePotency: 5,
+    kneeDoseMg: '20–40 mg (up to 30–50 mg for medical synovectomy)',
+    onsetProfile: 'Faster pain relief at day 7 (RA) and week 3 (OA) vs methylprednisolone (Garg 2014)',
+    durationProfile: 'Longest duration (2.5× less water-soluble than other esters); minimal systemic spillover',
+    clinicalPearls:
+      'Preferred by Neustadt for persistent effusions ("medical synovectomy"). Higher local tissue atrophy risk if leaked into subcutis — flush needle with lidocaine/saline before withdrawal.',
+  },
+  {
+    id: 'triamcinolone_acetonide',
+    genericName: 'Triamcinolone acetonide',
+    tradeName: 'Kenalog-40',
+    solubilityClass: 'Relatively Insoluble',
+    concentrationMgMl: '10 / 40 mg/mL',
+    relativePotency: 5,
+    kneeDoseMg: '20–40 mg (1 mL of 40 mg/mL)',
+    onsetProfile: 'Intermediate (24–72 hrs)',
+    durationProfile: 'Weeks to 3 months; similar long-term efficacy to methylprednisolone (Garg 2014)',
+    clinicalPearls:
+      'Standard TeachIM Checklist agent (1 cc 40 mg/mL + 2–4 cc 1% lidocaine). Watch for post-injection crystal synovitis flare (2–5%).',
+  },
+  {
+    id: 'methylprednisolone_acetate',
+    genericName: 'Methylprednisolone acetate',
+    tradeName: 'Depo-Medrol',
+    solubilityClass: 'Slightly Soluble',
+    concentrationMgMl: '20 / 40 / 80 mg/mL',
+    relativePotency: 5,
+    kneeDoseMg: '20–40 mg (Neustadt) up to 40–80 mg (Dalal Workshop)',
+    onsetProfile: 'Intermediate (24–48 hrs)',
+    durationProfile: 'Weeks to 2–3 months; transient cortisol suppression for up to 7 days after 40 mg IA',
+    clinicalPearls:
+      'Dalal & Lemenchick standard knee cocktail: 1 cc (40 mg) Depo-Medrol + 4 cc 1% lidocaine. Can be pre-mixed with lidocaine without flocculation.',
+  },
+  {
+    id: 'betamethasone_combo',
+    genericName: 'Betamethasone sodium phosphate + acetate',
+    tradeName: 'Celestone Soluspan',
+    solubilityClass: 'Combination',
+    concentrationMgMl: '6 mg/mL (3 mg + 3 mg)',
+    relativePotency: 25,
+    kneeDoseMg: '3–6 mg (0.5–1 mL) or 6–12 mg large joint',
+    onsetProfile: 'Rapid (soluble sodium phosphate component acts within hours)',
+    durationProfile: 'Sustained (acetate ester extends duration)',
+    clinicalPearls:
+      'Dual-phase onset + depot action; lower risk of crystal-induced post-injection flare and subcutaneous atrophy.',
+  },
+  {
+    id: 'hydrocortisone_tebutate',
+    genericName: 'Hydrocortisone tebutate',
+    tradeName: 'Hydrocortone-TBA',
+    solubilityClass: 'Relatively Insoluble',
+    concentrationMgMl: '50 mg/mL',
+    relativePotency: 1,
+    kneeDoseMg: '25–100 mg',
+    onsetProfile: 'Moderate',
+    durationProfile: 'Prolonged by tertiary butyl acetate (TBA) ester slowing enzymatic dissociation',
+    clinicalPearls: 'Historical benchmark; lower relative potency per mg compared to fluorinated steroids.',
+  },
+  {
+    id: 'dexamethasone_phosphate',
+    genericName: 'Dexamethasone sodium phosphate',
+    tradeName: 'Decadron',
+    solubilityClass: 'Soluble',
+    concentrationMgMl: '4 mg/mL',
+    relativePotency: 25,
+    kneeDoseMg: '4–8 mg (7.5–15 mg max large joint)',
+    onsetProfile: 'Very rapid (hours)',
+    durationProfile: 'Short intra-articular residence due to high water solubility and rapid systemic absorption',
+    clinicalPearls:
+      'Non-particulate; minimal skin atrophy risk, but shorter symptomatic relief in chronic knee OA.',
+  },
+];
+
+export const HYALURONAN_AGENTS: HyaluronanAgent[] = [
+  {
+    id: 'hyalgan',
+    genericName: 'Sodium hyaluronate',
+    brandName: 'Hyalgan',
+    sourceType: 'Natural (Avian)',
+    molecularWeightMDa: '0.5–0.73 × 10⁶ Da',
+    concentrationMgMl: 10,
+    doseVolumeMl: 2.0,
+    dosingSchedule: 'Weekly × 3 to 5 injections (20 mg/dose)',
+    sairRiskNote: 'No SAIR (pseudoseptic reaction) reported with natural preparations; 80% benefit up to 26 wks in RCT.',
+  },
+  {
+    id: 'supartz',
+    genericName: 'Sodium hyaluronate',
+    brandName: 'Supartz',
+    sourceType: 'Natural (Avian)',
+    molecularWeightMDa: '0.6–1.2 × 10⁶ Da',
+    concentrationMgMl: 10,
+    doseVolumeMl: 2.5,
+    dosingSchedule: 'Weekly × 5 injections',
+    sairRiskNote: 'Natural rooster-comb extraction; avoid in severe avian/egg protein allergy.',
+  },
+  {
+    id: 'orthovisc',
+    genericName: 'High-molecular-weight hyaluronan',
+    brandName: 'Orthovisc',
+    sourceType: 'Natural (Avian)',
+    molecularWeightMDa: '1.0–2.9 × 10⁶ Da',
+    concentrationMgMl: 15,
+    doseVolumeMl: 2.0,
+    dosingSchedule: 'Weekly × 3 or 4 injections',
+    sairRiskNote: 'High concentration (15 mg/mL) natural formulation without cross-linking SAIR risk.',
+  },
+  {
+    id: 'synvisc',
+    genericName: 'Hylan G-F 20',
+    brandName: 'Synvisc',
+    sourceType: 'Chemically Cross-Linked',
+    molecularWeightMDa: '6.0 × 10⁶ Da',
+    concentrationMgMl: 8,
+    doseVolumeMl: 2.0,
+    dosingSchedule: 'Weekly × 3 injections',
+    sairRiskNote:
+      'Cross-linked with formaldehyde & vinylsulfone. 2–8% incidence of Severe Acute Inflammatory Reaction (SAIR / pseudoseptic flare) — rule out septic arthritis before treating.',
+  },
+  {
+    id: 'euflexxa',
+    genericName: 'Non-animal stabilized sodium hyaluronate',
+    brandName: 'Euflexxa',
+    sourceType: 'Bacterial Fermentation (Non-Avian)',
+    molecularWeightMDa: '2.4–3.6 × 10⁶ Da',
+    concentrationMgMl: 10,
+    doseVolumeMl: 2.0,
+    dosingSchedule: 'Weekly × 3 injections',
+    sairRiskNote: 'Ideal for patients with avian/poultry allergies; no chemical cross-linking.',
+  },
+];
+
+export const SYNOVIAL_FLUID_PROFILES: SynovialFluidProfile[] = [
+  {
+    id: 'normal',
+    category: 'Normal Joint Fluid',
+    appearance: 'Clear / Pale Straw',
+    clarity: 'Transparent (print easily readable through tube)',
+    viscosity: 'High ("string sign" > 4–6 cm)',
+    wbcPerMm3: '< 200',
+    pmnPercent: '< 25%',
+    crystals: 'None',
+    culture: 'Negative',
+    immediateAction: 'No intervention required; proceed with indicated therapy if dry OA.',
+    badgeTone: 'nominal',
+  },
+  {
+    id: 'non_inflammatory',
+    category: 'Non-Inflammatory (Osteoarthritis / Trauma)',
+    appearance: 'Clear Yellow / Straw',
+    clarity: 'Transparent to slightly translucent',
+    viscosity: 'High to Slightly Reduced',
+    wbcPerMm3: '200 – 2,000',
+    pmnPercent: '< 25%',
+    crystals: 'None (occasionally apatite clumps on EM)',
+    culture: 'Negative',
+    immediateAction:
+      'Safe to aspirate to dryness and inject intra-articular corticosteroid (or hyaluronan if non-effusive OA) through same needle using hemostat exchange.',
+    badgeTone: 'nominal',
+  },
+  {
+    id: 'inflammatory',
+    category: 'Inflammatory (RA / Seronegative Spondyloarthropathy)',
+    appearance: 'Yellow to Opalescent',
+    clarity: 'Translucent to Cloudy (obscures print)',
+    viscosity: 'Low (watery, poor string sign)',
+    wbcPerMm3: '2,000 – 50,000',
+    pmnPercent: '50 – 70%',
+    crystals: 'None',
+    culture: 'Negative',
+    immediateAction:
+      'If infection excluded clinically/gram stain, intra-articular corticosteroid (e.g. triamcinolone hexacetonide) provides rapid synovitis suppression.',
+    badgeTone: 'caution',
+  },
+  {
+    id: 'crystal',
+    category: 'Crystal-Induced (Gout / CPPD Pseudogout)',
+    appearance: 'Cloudy Yellow / Chalky White',
+    clarity: 'Turbid / Opaque',
+    viscosity: 'Low',
+    wbcPerMm3: '2,000 – 75,000 (occasionally >50,000)',
+    pmnPercent: '> 70%',
+    crystals: 'Gout: Needle-shaped, strongly negatively birefringent (MSU). CPPD: Rhomboid, weakly positively birefringent.',
+    culture: 'Negative (send culture anyway — infection & crystals can coexist!)',
+    immediateAction:
+      'Thorough aspiration + send Gram stain/culture/crystals. Once infection excluded, 1–2 mL corticosteroid suspension rapidly suppresses crystal synovitis.',
+    badgeTone: 'warning',
+  },
+  {
+    id: 'septic',
+    category: 'Septic Arthritis (Bacterial Infection)',
+    appearance: 'Purulent / Gray-Green / Creamy',
+    clarity: 'Opaque',
+    viscosity: 'Very Low',
+    wbcPerMm3: '> 50,000 (often > 100,000)',
+    pmnPercent: '> 75–90%',
+    crystals: 'Absent (unless coexisting)',
+    culture: 'Positive (Staph aureus, Strep, Gonococcus)',
+    immediateAction:
+      'ABSOLUTE CONTRAINDICATION TO STEROID INJECTION! Evacuate pus, send stat Gram stain/culture, start IV empiric antibiotics, and arrange urgent orthopedic washout.',
+    badgeTone: 'critical',
+  },
+];
+
+export const CONTRAINDICATIONS_DATA = {
+  absolute: [
+    {
+      title: 'Local or Systemic Infection / Sepsis / Cellulitis',
+      detail: 'Overlying cellulitis, septic arthritis, or bacteremia risks seeding bacteria into the joint or suppressing local host immunity.',
+      source: 'Dalal 2015; Neustadt 2006; TeachIM',
+    },
+    {
+      title: 'Prosthetic Joint / Arthroplasty Hardware',
+      detail: 'Hardware in the joint carries catastrophic risk of periprosthetic joint infection; refer to orthopedic surgery.',
+      source: 'TeachIM Checklist; Dalal 2015',
+    },
+    {
+      title: 'Intra-Articular Fracture',
+      detail: 'Steroids impair bone healing and mask unstable structural injury; diagnostic aspiration only if needed by orthopedics.',
+      source: 'Dalal 2015 (Slide 10)',
+    },
+    {
+      title: 'Injection into Critical Weight-Bearing Tendons',
+      detail: 'Never inject directly into patellar or quadriceps tendons — causes collagen necrosis and tendon rupture.',
+      source: 'Dalal 2015 (Slide 10, 21)',
+    },
+    {
+      title: 'Hypersensitivity / Prior Severe Steroid Flare',
+      detail: 'Known allergy to steroid, anesthetic, or avian hyaluronans (use Euflexxa), or prior severe reaction.',
+      source: 'Dalal 2015; Neustadt 2006',
+    },
+    {
+      title: 'Reluctant or Uninformed Patient',
+      detail: 'Valid informed consent explaining risks, benefits, and alternatives is mandatory before needle insertion.',
+      source: 'Dalal 2015; TeachIM Checklist',
+    },
+  ],
+  relative: [
+    {
+      title: 'Uncontrolled Diabetes Mellitus',
+      detail: 'IA steroids cause transient hyperglycemia persisting up to 5 days (Wang 2006). Monitor capillary glucose closely.',
+      source: 'Dalal 2015 (Slide 22); Neustadt 2006',
+    },
+    {
+      title: 'Anticoagulation & Bleeding Disorders',
+      detail: 'Therapeutic INR (warfarin) is safe for knee arthrocentesis/injection (Thumboo 1998; Ahmed 2012); NOACs variable/generally safe with 22–25G needle and firm compression.',
+      source: 'Dalal 2015 (Slide 10); Neustadt 2006 (p. 902)',
+    },
+    {
+      title: 'Potential Knee Surgery within < 3 Months',
+      detail: 'Recent IA steroid within 3 months prior to Total Knee Arthroplasty increases postoperative periprosthetic infection risk.',
+      source: 'TeachIM Checklist',
+    },
+    {
+      title: 'Frequent Prior Injections (> 3/year) or Prior < 1 mo Benefit',
+      detail: 'Wait ≥ 8–12 weeks between weight-bearing joint injections; max 2–3 per year. Reassess diagnosis if < 1 mo relief.',
+      source: 'Neustadt 2006 (p. 906); TeachIM; Dalal 2015',
+    },
+    {
+      title: 'Severe Joint Destruction / Instability / Severe Obesity',
+      detail: 'Unstable "bone-on-bone" knees respond poorly unless large inflammatory effusion is present and patient restricts weight-bearing.',
+      source: 'Neustadt 2006 (p. 902, 910)',
+    },
+  ],
+};
+
+export const COMPLICATIONS_DATA = [
+  {
+    name: 'Septic Arthritis (Iatrogenic Infection)',
+    rate: '0.072% (18 / 250,000; range 1:3,000 to 1:50,000)',
+    timing: '2–14 days post-injection',
+    management: 'Strict "no-touch" aseptic prep prevents this. If red, hot, feverish joint develops, perform immediate arthrocentesis and withhold steroids.',
+  },
+  {
+    name: 'Post-Injection Pain / Steroid Flare',
+    rate: '2–5% crystal flare (up to 9% mild post-injection pain)',
+    timing: 'Starts within hours, resolves in 48–72 hours',
+    management: 'Caused by corticosteroid ester microcrystals. Ice 10–15 min TID + oral analgesics/NSAIDs. Rarely requires re-aspiration to exclude sepsis.',
+  },
+  {
+    name: 'Subcutaneous Fat Atrophy & Depigmentation',
+    rate: '2.4% atrophy · 0.8% depigmentation (meta-analysis 5.5% total)',
+    timing: 'Weeks to months; usually reverses once crystals absorb',
+    management: 'Prevent by avoiding superficial leakage: dilute with lidocaine, flush needle track with lidocaine/saline before withdrawal.',
+  },
+  {
+    name: 'Hyperglycemia in Diabetic Patients',
+    rate: 'Common transient spike (up to 5 days)',
+    timing: 'Hours 6–120 post-injection',
+    management: 'Warn diabetic patients pre-procedure to monitor blood glucose frequently for 5 days and adjust insulin/oral therapy if needed.',
+  },
+  {
+    name: 'Severe Acute Inflammatory Reaction (SAIR)',
+    rate: '2–8% with cross-linked Hylan G-F 20 (Synvisc)',
+    timing: '24–72 hours after viscosupplementation',
+    management: 'Pseudoseptic reaction NOT seen with natural hyaluronans. Aspirate to rule out bacterial infection; treat with ice, NSAIDs, or CSI.',
+  },
+  {
+    name: 'Facial Flushing / Transient Cortisol Suppression',
+    rate: '0.6% flushing · 0.7% localized warmth',
+    timing: 'First 24–48 hrs (adrenal suppression up to 7 days)',
+    management: 'Self-limiting. Rest for 24–72 hrs delays systemic escape and minimizes flushing/adrenal suppression.',
+  },
+];
